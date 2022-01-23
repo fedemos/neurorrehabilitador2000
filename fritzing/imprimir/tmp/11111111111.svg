@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Fritzing (http://www.fritzing.org/) -->
+
+<svg
+   x="0in"
+   y="0in"
+   height="210mm"
+   viewBox="0 0 841.89058 595.27559"
+   version="1.2"
+   width="297mm"
+   id="svg986"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs990" />
+  <g
+     id="g2511">
+    <g
+       partID="426140"
+       id="g33">
+      <g
+         transform="translate(7.94904,115.625)"
+         id="g31">
+        <g
+           id="g29">
+          <circle
+             cy="7.5527301"
+             cx="7.5527301"
+             r="5.9527602"
+             stroke-width="0"
+             fill="#000000"
+             id="nonconn0"
+             stroke="#000000" />
+        </g>
+      </g>
+    </g>
+    <g
+       partID="426130"
+       id="g41">
+      <g
+         transform="translate(263.549,115.625)"
+         id="g39">
+        <g
+           id="g37">
+          <circle
+             cy="7.5527301"
+             cx="7.5527301"
+             r="5.9527602"
+             stroke-width="0"
+             fill="#000000"
+             id="circle35"
+             stroke="#000000" />
+        </g>
+      </g>
+    </g>
+    <g
+       partID="426110"
+       id="g49">
+      <g
+         transform="translate(7.94904,5.46532)"
+         id="g47">
+        <g
+           id="g45">
+          <circle
+             cy="7.5527301"
+             cx="7.5527301"
+             r="5.9527602"
+             stroke-width="0"
+             fill="#000000"
+             id="circle43"
+             stroke="#000000" />
+        </g>
+      </g>
+    </g>
+    <g
+       partID="426080"
+       id="g57">
+      <g
+         transform="translate(263.549,5.46531)"
+         id="g55">
+        <g
+           id="g53">
+          <circle
+             cy="7.5527301"
+             cx="7.5527301"
+             r="5.9527602"
+             stroke-width="0"
+             fill="#000000"
+             id="circle51"
+             stroke="#000000" />
+        </g>
+      </g>
+    </g>
+    <g
+       partID="931540"
+       id="g520">
+      <g
+         transform="translate(84.5072,51.7834)"
+         id="g518">
+        <g
+           id="g516">
+          <circle
+             cy="4.4346499"
+             cx="4.4346499"
+             r="2.83465"
+             stroke-width="0"
+             fill="#000000"
+             id="circle514"
+             stroke="#000000" />
+        </g>
+      </g>
+    </g>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.3"
+       id="rect2390"
+       width="283.46469"
+       height="141.73235"
+       x="0"
+       y="2.8421709e-14" />
+  </g>
+</svg>

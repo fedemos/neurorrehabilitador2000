@@ -103,9 +103,11 @@ void setup() {
   pinMode(pinLatch, OUTPUT);// 3
   pinMode(pinClock, OUTPUT);// 4
 
+  //declara el pin 6 como salida
+  pinMode(6, OUTPUT);
+
   //declara el pin 7 como salida
   pinMode(7, OUTPUT);
-
   //declara el pin 13 como salida
   pinMode(13, OUTPUT);
 
@@ -213,7 +215,7 @@ long programa1() { //pines 9,10
   return average;
 }
 
-long programa2(){ //pines 9,A1
+long programa2() { //pines 9,A1
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -232,7 +234,7 @@ long programa2(){ //pines 9,A1
 
   return average;
 }
-long programa3(){ //pines 9,A2
+long programa3() { //pines 9,A2
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -251,7 +253,7 @@ long programa3(){ //pines 9,A2
 
   return average;
 }
-long programa4(){ //pines 9,A3
+long programa4() { //pines 9,A3
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -270,7 +272,7 @@ long programa4(){ //pines 9,A3
 
   return average;
 }
-long programa5(){ //pines 9,A4
+long programa5() { //pines 9,A4
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -289,7 +291,7 @@ long programa5(){ //pines 9,A4
 
   return average;
 }
-long programa6(){ //pines 9,A5
+long programa6() { //pines 9,A5
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -308,7 +310,7 @@ long programa6(){ //pines 9,A5
 
   return average;
 }
-long programa7(){ //pines 9,A6
+long programa7() { //pines 9,A6
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -327,7 +329,7 @@ long programa7(){ //pines 9,A6
 
   return average;
 }
-long programa8(){ //pines 9,A7
+long programa8() { //pines 9,A7
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -357,13 +359,13 @@ void ciclo() {
   tiempo();
   // long programa0 =  sensor2.capacitiveSensor(30);//9,11
   // long programa1 =  sensor3.capacitiveSensor(30);//9,10
- // long programa2 =  sensor4.capacitiveSensor(30);//9,A1
- // long programa3 =  sensor5.capacitiveSensor(30);//9,A2
- // long programa4 =  sensor6.capacitiveSensor(30);//9,A3
- // long programa5 =  sensor7.capacitiveSensor(30);//9,A4
- // long programa6 =  sensor8.capacitiveSensor(30);//9,A5
- // long programa7 =  sensor9.capacitiveSensor(30);//9,A6
- // long programa8 =  sensor10.capacitiveSensor(30);//9,A7
+  // long programa2 =  sensor4.capacitiveSensor(30);//9,A1
+  // long programa3 =  sensor5.capacitiveSensor(30);//9,A2
+  // long programa4 =  sensor6.capacitiveSensor(30);//9,A3
+  // long programa5 =  sensor7.capacitiveSensor(30);//9,A4
+  // long programa6 =  sensor8.capacitiveSensor(30);//9,A5
+  // long programa7 =  sensor9.capacitiveSensor(30);//9,A6
+  // long programa8 =  sensor10.capacitiveSensor(30);//9,A7
 
 
   if ((programa0 > 600 ) && (randomNumber == 9)) {//7
@@ -423,8 +425,8 @@ void iniciarCiclo() {
   // long inicio =  sensor1.capacitiveSensor(30);
   //si se toca el sensor
   if (inicio > 600) {
-    //prende el LED del pin 12
-    //digitalWrite(12, HIGH);
+    //prende el LED del pin 6
+    digitalWrite(6, HIGH);
     // imprime inicio en el puerto de serie
     Serial.println("inicio ");
     //espera 1000ms
@@ -448,25 +450,32 @@ void tiempo() {
   unsigned long ahora = millis();
   if (ahora - tiempos >= intervalo) { //si se cumple 1 minuto
     tiempos = ahora;
-    for (int i = 0; i <= 3; i++) {
-      // prende todos los led
-      shiftOut(pinData, pinClock, LSBFIRST, B11111111);
-      //apaga el LED de inicio
-      digitalWrite(7, HIGH);
-    }
-    delay(1000); //espera 1000ms
-    for (int i = 0; i <= 3; i++) {
-      // apaga todos los led
-      shiftOut(pinData, pinClock, LSBFIRST, B00000000);
-      //apaga el LED de inicio
-      digitalWrite(7, LOW);
-      // imprime fin de ciclo en el puerto de serie
-      Serial.println("fin de ciclo");
-    }
+
+    // prende todos los led
+    shiftOut(pinData, pinClock, LSBFIRST, B11111111);
+    digitalWrite(pinLatch, HIGH);
+    digitalWrite(7, HIGH);
+
     //espera 1500ms
-    delay(1503);
+    delay(1500);
+
+    // apaga todos los led
+    shiftOut(pinData, pinClock, LSBFIRST, B00000000);
+    digitalWrite(pinLatch, LOW);
+    digitalWrite(7, LOW);
+
+    //apaga el LED de inicio
+    digitalWrite(6, LOW);
+
+    //espera 150ms
+    delay(150);
+
+    // imprime fin de ciclo en el puerto de serie
+    Serial.println("fin de ciclo");
+
     // pone el contador en 1
     contador = 1;
+    
     // vuelve a loop()
     loop;
   }
