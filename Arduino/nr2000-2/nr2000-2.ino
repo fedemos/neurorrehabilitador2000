@@ -2,7 +2,7 @@
   Autor: fedemos
   licencia: gpl3
   fecha: 7/11/2021
-  versión: 0.0.3
+  versión: 0.0.4
 */
 
 //Parameters
@@ -19,9 +19,9 @@ int pinData  = 2;
 int pinLatch = 3;
 int pinClock = 4;
 int contador = 1;
-int milistaLed[] = {B00000001, B00000010, B00000100, B00001000, B00010000, B00100000, B01000000, B1000000, 7 };
+int milistaLed[] = {B00000001, B00000010, B00000100, B00001000, B00010000, B00100000, B01000000, B10000000 };
 long randomNumber;
-long randomNumberold = randomNumber + 1;
+long randomNumberold =  1;
 
 // libreria para sensor capasitivo
 #include <CapacitiveSensor.h>
@@ -48,7 +48,7 @@ void ledWrite(int Led) {
     // digitalWrite(pinLatch, LOW);
     // shiftOut(pinData, pinClock, LSBFIRST, B00000000);
     // digitalWrite(pinLatch, HIGH);
-    digitalWrite(7, HIGH);
+    digitalWrite(5, HIGH);
   }
   else {
     //digitalWrite(12, LOW);
@@ -67,26 +67,29 @@ void ledWrite(int Led) {
 */
 
 int espera(int x) {
+
   // si el x es menor o igual a 6 el tiempo es de 1000ms
-  if (x <= 9) {
-    return 1000;
+  if (x <= 9) { //1
+    return 650;
   }
   // si el x es mayor a 9 o menoro igual a 18 el tiempo es de 500ms
-  else if (x > 9 or x <= 18) {
+  else if (x > 9 or x <= 18) { //2
     return 500;
   }
   // si el x es mayor a 18 o menor o igual a 27 el tiempo es de 250ms
-  else if (x < 18 or x <= 27) {
-    return 250;
+  else if (x < 18 or x <= 27) {//3
+    return 350;
   }
   // si el x es mayor a 27 o menor o igual a 36 el tiempo es de 100ms
-  else if (x < 27 or x <= 36) {
-    return 100;
+  else if (x < 27 or x <= 36) {//4
+    return 200;
   }
   // si no se dan las otras hipótesis el tiempo es de 50ms
-  else  {
-    return 50;
+  else  {//5
+    return 150;
   }
+
+
 }
 
 // ----------------------------------
@@ -96,7 +99,7 @@ void setup() {
   Serial.println("Autor: fedemos");
   Serial.println("licencia: gpl3 ");
   Serial.println("fecha: 7/11/2021");
-  Serial.println("versión: 0.0.3");
+  Serial.println("versión: 0.0.4");
 
   // los pines para controlar el 74hc595
   pinMode(pinData, OUTPUT); // 2
@@ -106,8 +109,8 @@ void setup() {
   //declara el pin 6 como salida
   pinMode(6, OUTPUT);
 
-  //declara el pin 7 como salida
-  pinMode(7, OUTPUT);
+  //declara el pin 5 como salida
+  pinMode(5, OUTPUT);
   //declara el pin 13 como salida
   pinMode(13, OUTPUT);
 
@@ -131,23 +134,27 @@ void setup() {
 void aleatorio(int x) {
 
   // da un número del 0 al 8
-  randomNumber = random(0, 8);
+  randomNumber = random(9);
   //
-  if (randomNumber = randomNumberold) {
+  if (randomNumber == randomNumberold) {
 
     // da un número del 0 al 8
-    randomNumber = random(0, 8);
+    randomNumber = random(9);
+    //luego de hacer el random repetido le resta 1 al contador
+    contador--;
   }
-  //tiempo de espera antes de hacer el random
-  delay(x);
+  else {
 
-  // prende el led
-  ledWrite(milistaLed[randomNumber]);
+    // prende el led
+    ledWrite(milistaLed[randomNumber]);
 
-  //luego de hacer el random le suma 1 al contador
-  contador++;
-  //
-  randomNumberold = randomNumber;
+    //luego de hacer el random le suma 1 al contador
+    contador++;
+    //
+    randomNumberold = randomNumber;
+    //tiempo de espera antes de hacer el random
+    delay(x);
+  }
 }
 
 /*
@@ -368,45 +375,53 @@ void ciclo() {
   // long programa8 =  sensor10.capacitiveSensor(30);//9,A7
 
 
-  if ((programa0 > 600 ) && (randomNumber == 9)) {//7
-    digitalWrite(7, LOW);
+  if ((programa0 > 600 ) && (randomNumber == 8)) {//11 - 5
+    digitalWrite(5, LOW);
     aleatorio(espera(contador));
   }
-  if ((programa1 > 600 ) && (randomNumber == 8)) {
+  if ((programa1 > 600 ) && (randomNumber == 7)) {//10 - Q0
+    digitalWrite(pinLatch, LOW);
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B10000000
     digitalWrite(pinLatch, LOW);
     aleatorio(espera(contador));
   }
-  if ((programa2 > 600 ) && (randomNumber == 7)) {
+  if ((programa2 > 600 ) && (randomNumber == 6)) {//A1 - Q1
+    digitalWrite(pinLatch, LOW);
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B010000000
     digitalWrite(pinLatch, LOW);
     aleatorio(espera(contador));
   }
-  if ((programa3 > 600 ) && (randomNumber == 6)) {
+  if ((programa3 > 600 ) && (randomNumber == 5)) {//A2 - Q2
+    digitalWrite(pinLatch, LOW);
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00100000
     digitalWrite(pinLatch, LOW);
     aleatorio(espera(contador));
   }
-  if ((programa4 > 600 ) && (randomNumber == 5)) {
+  if ((programa4 > 600 ) && (randomNumber == 4)) {//A3 - Q3
+    digitalWrite(pinLatch, LOW);
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00010000
     digitalWrite(pinLatch, LOW);
     aleatorio(espera(contador));
   }
-  if ((programa5 > 600 ) && (randomNumber == 4)) {
+  if ((programa5 > 600 ) && (randomNumber == 3)) {//A4 - Q4
+    digitalWrite(pinLatch, LOW);
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00001000
     digitalWrite(pinLatch, LOW);
     aleatorio(espera(contador));
   }
-  if ((programa6 > 600 ) && (randomNumber == 3)) {
+  if ((programa6 > 600 ) && (randomNumber == 2)) {//A5 - Q5
+    digitalWrite(pinLatch, LOW);
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000100
     aleatorio(espera(contador));
   }
-  if ((programa7 > 600 ) && (randomNumber == 2)) {
+  if ((programa7 > 600 ) && (randomNumber == 1)) {//A6 - Q6
+    digitalWrite(pinLatch, LOW);
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000010
     digitalWrite(pinLatch, LOW);
     aleatorio(espera(contador));
   }
-  if ((programa8 > 600 ) && (randomNumber == 1)) {
+  if ((programa8 > 600 ) && (randomNumber == 0)) {//A7 - Q7
+    digitalWrite(pinLatch, LOW);
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000001
     digitalWrite(pinLatch, LOW);
     aleatorio(espera(contador));
@@ -454,7 +469,7 @@ void tiempo() {
     // prende todos los led
     shiftOut(pinData, pinClock, LSBFIRST, B11111111);
     digitalWrite(pinLatch, HIGH);
-    digitalWrite(7, HIGH);
+    digitalWrite(5, HIGH);
 
     //espera 1500ms
     delay(1500);
@@ -462,7 +477,7 @@ void tiempo() {
     // apaga todos los led
     shiftOut(pinData, pinClock, LSBFIRST, B00000000);
     digitalWrite(pinLatch, LOW);
-    digitalWrite(7, LOW);
+    digitalWrite(5, LOW);
 
     //apaga el LED de inicio
     digitalWrite(6, LOW);
@@ -475,7 +490,7 @@ void tiempo() {
 
     // pone el contador en 1
     contador = 1;
-    
+
     // vuelve a loop()
     loop;
   }
