@@ -70,20 +70,20 @@ int espera(int x) {
 
   // si el x es menor o igual a 6 el tiempo es de 1000ms
   if (x <= 9) { //1
-    return 650;
+    return 300;
   }
   // si el x es mayor a 9 o menoro igual a 18 el tiempo es de 500ms
   else if (x > 9 or x <= 18) { //2
-    return 500;
+    return 250;
   }
   // si el x es mayor a 18 o menor o igual a 27 el tiempo es de 250ms
   else if (x < 18 or x <= 27) {//3
-    return 350;
-  }
-  // si el x es mayor a 27 o menor o igual a 36 el tiempo es de 100ms
-  else if (x < 27 or x <= 36) {//4
     return 200;
   }
+  // si el x es mayor a 27 o menor o igual a 36 el tiempo es de 100ms
+ // else if (x < 27 or x <= 36) {//4
+  //  return 200;
+  //}
   // si no se dan las otras hipótesis el tiempo es de 50ms
   else  {//5
     return 150;
