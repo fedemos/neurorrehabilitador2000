@@ -2,16 +2,26 @@
   Autor: fedemos
   licencia: gpl3
   fecha: 7/11/2021
-  versión: 0.0.4
+  versión: 0.0.10
 */
-
+int cuenta, estadoTouch, estadoTouchAnterior;
+int cuenta0, estadoTouch0, estadoTouchAnterior0;
+int cuenta1, estadoTouch1, estadoTouchAnterior1;
+int cuenta2, estadoTouch2, estadoTouchAnterior2;
+int cuenta3, estadoTouch3, estadoTouchAnterior3;
+int cuenta4, estadoTouch4, estadoTouchAnterior4;
+int cuenta5, estadoTouch5, estadoTouchAnterior5;
+int cuenta6, estadoTouch6, estadoTouchAnterior6;
+int cuenta7, estadoTouch7, estadoTouchAnterior7;
+int cuenta8, estadoTouch8, estadoTouchAnterior8;
 //Parameters
 bool autocal, autocal1, autocal2, autocal3, autocal4, autocal5, autocal6, autocal7, autocal8, autocal9  = 0;
 const int numReadings  = 10;
 long readings [numReadings], readings1 [numReadings], readings2 [numReadings], readings3 [numReadings], readings4 [numReadings], readings5 [numReadings], readings6 [numReadings], readings7 [numReadings], readings8 [numReadings], readings9 [numReadings];
 int readIndex, readIndex1, readIndex2, readIndex3, readIndex4, readIndex5, readIndex6, readIndex7, readIndex8, readIndex9  = 0;
 long total, total1, total2, total3, total4, total5, total6, total7, total8, total9  = 0;
-const int sensitivity  = 1000;
+const int sensitivity  = 600;
+int contadorInicio = 0;
 //const int thresh  = 200;
 //const int csStep  = 10000;
 //
@@ -25,16 +35,16 @@ long randomNumberold =  1;
 
 // libreria para sensor capasitivo
 #include <CapacitiveSensor.h>
-CapacitiveSensor   sensor1 = CapacitiveSensor(9, 12); //inicio
-CapacitiveSensor   sensor2 = CapacitiveSensor(9, 11); //programa0
-CapacitiveSensor   sensor3 = CapacitiveSensor(9, 10); //programa1
-CapacitiveSensor   sensor4 = CapacitiveSensor(9, A1); //programa2
-CapacitiveSensor   sensor5 = CapacitiveSensor(9, A2); //programa3
-CapacitiveSensor   sensor6 = CapacitiveSensor(9, A3); //programa4
-CapacitiveSensor   sensor7 = CapacitiveSensor(9, A4); //programa5
-CapacitiveSensor   sensor8 = CapacitiveSensor(9, A5); //programa6
-CapacitiveSensor   sensor9 = CapacitiveSensor(9, A6); //programa7
-CapacitiveSensor   sensor10 = CapacitiveSensor(9, A7); //programa8
+CapacitiveSensor   sensor1 = CapacitiveSensor(7, 8); //inicio 12-8
+CapacitiveSensor   sensor2 = CapacitiveSensor(7, 9); //programa0 11-9
+CapacitiveSensor   sensor3 = CapacitiveSensor(7, 12); //programa1 10-12
+CapacitiveSensor   sensor4 = CapacitiveSensor(7, 11); //programa2 A1-11
+CapacitiveSensor   sensor5 = CapacitiveSensor(7, 10); //programa3 A2 -10
+CapacitiveSensor   sensor6 = CapacitiveSensor(7, A1); //programa4 A3 -A1
+CapacitiveSensor   sensor7 = CapacitiveSensor(7, A2); //programa5 A4 -A2
+CapacitiveSensor   sensor8 = CapacitiveSensor(7, A3); //programa6 A5 -A3
+CapacitiveSensor   sensor9 = CapacitiveSensor(7, A4); //programa7 A6 -A4
+CapacitiveSensor   sensor10 = CapacitiveSensor(7, A5); //programa8 A7-A5
 
 
 /*
@@ -68,7 +78,7 @@ void ledWrite(int Led) {
 
 int espera(int x) {
 
-  // si el x es menor o igual a 6 el tiempo es de 1000ms
+  // si el x es menor o igual a 6¡9 el tiempo es de 1000ms
   if (x <= 9) { //1
     return 300;
   }
@@ -81,10 +91,10 @@ int espera(int x) {
     return 200;
   }
   // si el x es mayor a 27 o menor o igual a 36 el tiempo es de 100ms
- // else if (x < 27 or x <= 36) {//4
+  // else if (x < 27 or x <= 36) {//4
   //  return 200;
   //}
-  // si no se dan las otras hipótesis el tiempo es de 50ms
+  // si no se dan las otras hipótesis el tiempo es de 150ms
   else  {//5
     return 150;
   }
@@ -99,7 +109,7 @@ void setup() {
   Serial.println("Autor: fedemos");
   Serial.println("licencia: gpl3 ");
   Serial.println("fecha: 7/11/2021");
-  Serial.println("versión: 0.0.4");
+  Serial.println("versión: 0.0.10");
 
   // los pines para controlar el 74hc595
   pinMode(pinData, OUTPUT); // 2
@@ -115,7 +125,9 @@ void setup() {
   pinMode(13, OUTPUT);
 
   // apaga todos los led
-  // shiftOut(pinData, pinClock, LSBFIRST, B00000000);
+  digitalWrite(pinLatch, LOW);
+  shiftOut(pinData, pinClock, LSBFIRST, B00000000);
+  digitalWrite(pinLatch, HIGH);
 
   //para hacer que el random sea seudo aleatorio
   randomSeed(analogRead(A0));
@@ -137,11 +149,11 @@ void aleatorio(int x) {
   randomNumber = random(9);
   //
   if (randomNumber == randomNumberold) {
-
-    // da un número del 0 al 8
-    randomNumber = random(9);
     //luego de hacer el random repetido le resta 1 al contador
     contador--;
+    // vuelve a hacer un random
+    randomNumber = random(9);
+
   }
   else {
 
@@ -163,7 +175,7 @@ void aleatorio(int x) {
    ---------
 */
 
-long inicio() { //pines 9,12
+long inicio() { //pines 7,8
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -183,7 +195,7 @@ long inicio() { //pines 9,12
   return average;
 }
 
-long programa0() { //pines 9,11
+long programa0() { //pines 7,9
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -202,7 +214,7 @@ long programa0() { //pines 9,11
 
   return average;
 }
-long programa1() { //pines 9,10
+long programa1() { //pines 7,12
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -222,7 +234,7 @@ long programa1() { //pines 9,10
   return average;
 }
 
-long programa2() { //pines 9,A1
+long programa2() { //pines 7,11
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -241,7 +253,7 @@ long programa2() { //pines 9,A1
 
   return average;
 }
-long programa3() { //pines 9,A2
+long programa3() { //pines 7,10
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -260,7 +272,7 @@ long programa3() { //pines 9,A2
 
   return average;
 }
-long programa4() { //pines 9,A3
+long programa4() { //pines 7,A1
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -279,7 +291,7 @@ long programa4() { //pines 9,A3
 
   return average;
 }
-long programa5() { //pines 9,A4
+long programa5() { //pines 7,A2
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -298,7 +310,7 @@ long programa5() { //pines 9,A4
 
   return average;
 }
-long programa6() { //pines 9,A5
+long programa6() { //pines 7,A3
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -317,7 +329,7 @@ long programa6() { //pines 9,A5
 
   return average;
 }
-long programa7() { //pines 9,A6
+long programa7() { //pines 7,A4
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -336,7 +348,7 @@ long programa7() { //pines 9,A6
 
   return average;
 }
-long programa8() { //pines 9,A7
+long programa8() { //pines 7,A5
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
@@ -362,70 +374,6 @@ long programa8() { //pines 9,A7
 */
 
 void ciclo() {
-  // cuando se cumple el tiempo termina el ciclo
-  tiempo();
-  // long programa0 =  sensor2.capacitiveSensor(30);//9,11
-  // long programa1 =  sensor3.capacitiveSensor(30);//9,10
-  // long programa2 =  sensor4.capacitiveSensor(30);//9,A1
-  // long programa3 =  sensor5.capacitiveSensor(30);//9,A2
-  // long programa4 =  sensor6.capacitiveSensor(30);//9,A3
-  // long programa5 =  sensor7.capacitiveSensor(30);//9,A4
-  // long programa6 =  sensor8.capacitiveSensor(30);//9,A5
-  // long programa7 =  sensor9.capacitiveSensor(30);//9,A6
-  // long programa8 =  sensor10.capacitiveSensor(30);//9,A7
-
-
-  if ((programa0 > 600 ) && (randomNumber == 8)) {//11 - 5
-    digitalWrite(5, LOW);
-    aleatorio(espera(contador));
-  }
-  if ((programa1 > 600 ) && (randomNumber == 7)) {//10 - Q0
-    digitalWrite(pinLatch, LOW);
-    shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B10000000
-    digitalWrite(pinLatch, LOW);
-    aleatorio(espera(contador));
-  }
-  if ((programa2 > 600 ) && (randomNumber == 6)) {//A1 - Q1
-    digitalWrite(pinLatch, LOW);
-    shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B010000000
-    digitalWrite(pinLatch, LOW);
-    aleatorio(espera(contador));
-  }
-  if ((programa3 > 600 ) && (randomNumber == 5)) {//A2 - Q2
-    digitalWrite(pinLatch, LOW);
-    shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00100000
-    digitalWrite(pinLatch, LOW);
-    aleatorio(espera(contador));
-  }
-  if ((programa4 > 600 ) && (randomNumber == 4)) {//A3 - Q3
-    digitalWrite(pinLatch, LOW);
-    shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00010000
-    digitalWrite(pinLatch, LOW);
-    aleatorio(espera(contador));
-  }
-  if ((programa5 > 600 ) && (randomNumber == 3)) {//A4 - Q4
-    digitalWrite(pinLatch, LOW);
-    shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00001000
-    digitalWrite(pinLatch, LOW);
-    aleatorio(espera(contador));
-  }
-  if ((programa6 > 600 ) && (randomNumber == 2)) {//A5 - Q5
-    digitalWrite(pinLatch, LOW);
-    shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000100
-    aleatorio(espera(contador));
-  }
-  if ((programa7 > 600 ) && (randomNumber == 1)) {//A6 - Q6
-    digitalWrite(pinLatch, LOW);
-    shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000010
-    digitalWrite(pinLatch, LOW);
-    aleatorio(espera(contador));
-  }
-  if ((programa8 > 600 ) && (randomNumber == 0)) {//A7 - Q7
-    digitalWrite(pinLatch, LOW);
-    shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000001
-    digitalWrite(pinLatch, LOW);
-    aleatorio(espera(contador));
-  }
 
 
 }
@@ -439,18 +387,167 @@ void ciclo() {
 void iniciarCiclo() {
   // long inicio =  sensor1.capacitiveSensor(30);
   //si se toca el sensor
-  if (inicio > 600) {
+  estadoTouch = inicio() > 250;
+  if (estadoTouch != estadoTouchAnterior) {
+    estadoTouch = estadoTouchAnterior;
+    // if (inicio > 1000) {
     //prende el LED del pin 6
     digitalWrite(6, HIGH);
-    // imprime inicio en el puerto de serie
-    Serial.println("inicio ");
     //espera 1000ms
     delay(1000);
-    // hace el primer random
-    ledWrite(milistaLed[randomNumber]);
-    //inicia la fuciión ciclo
-    ciclo();
+    // imprime inicio en el puerto de serie
+    Serial.println("inicio ");
+    contadorInicio++;
+    Serial.println(contadorInicio);
+
+    //espera 1000ms
+    delay(1000);
+
   }
+  switch (contadorInicio) {
+    case 1:
+      //do something when var equals 1
+      // contadorInicio=0;
+      // hace el primer random
+      ledWrite(milistaLed[randomNumber]);
+      //inicia la fuciión ciclo
+      // cuando se cumple el tiempo termina el ciclo
+      tiempo();
+      // long programa0 =  sensor2.capacitiveSensor(30);//9,11
+      // long programa1 =  sensor3.capacitiveSensor(30);//9,10
+      // long programa2 =  sensor4.capacitiveSensor(30);//9,A1
+      // long programa3 =  sensor5.capacitiveSensor(30);//9,A2
+      // long programa4 =  sensor6.capacitiveSensor(30);//9,A3
+      // long programa5 =  sensor7.capacitiveSensor(30);//9,A4
+      // long programa6 =  sensor8.capacitiveSensor(30);//9,A5
+      // long programa7 =  sensor9.capacitiveSensor(30);//9,A6
+      // long programa8 =  sensor10.capacitiveSensor(30);//9,A7
+
+      estadoTouch0 = programa0() > 250;
+      if (estadoTouch0 != estadoTouchAnterior0) {
+        estadoTouch0 = estadoTouchAnterior0;
+        Serial.println("inicio 0");
+
+        // if ((programa0() > 180 ) && (randomNumber == 8)) {//5-R8-9
+        digitalWrite(5, LOW);
+        aleatorio(espera(contador));
+      }
+
+      estadoTouch1 = programa1() > 250;
+      if (estadoTouch1 != estadoTouchAnterior1) {
+        estadoTouch1 = estadoTouchAnterior1;
+        Serial.println("inicio1 ");
+
+        // if ((programa1 > 1000 ) && (randomNumber == 7)) {// Q0-R7-12
+        digitalWrite(pinLatch, LOW);
+        shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B10000000
+        digitalWrite(pinLatch, HIGH);
+        aleatorio(espera(contador));
+      }
+
+      estadoTouch2 = programa2() > 250;
+      if (estadoTouch2 != estadoTouchAnterior2) {
+        estadoTouch2 = estadoTouchAnterior2;
+        Serial.println("inicio 2");
+
+        // if ((programa2 > 1000 ) && (randomNumber == 6)) {//Q1-R6-11
+        digitalWrite(pinLatch, LOW);
+        shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B010000000
+        digitalWrite(pinLatch, HIGH);
+        aleatorio(espera(contador));
+      }
+      estadoTouch3 = programa3() > 250;
+      if (estadoTouch3 != estadoTouchAnterior3) {
+        estadoTouch3 = estadoTouchAnterior3;
+        Serial.println("inicio 3");
+
+        //if ((programa3() > 180 ) && (randomNumber == 5)) {//Q2-R5-10
+        digitalWrite(pinLatch, LOW);
+        shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00100000
+        digitalWrite(pinLatch, HIGH);
+        aleatorio(espera(contador));
+      }
+      estadoTouch4 = programa4() > 250;
+      if (estadoTouch4 != estadoTouchAnterior4) {
+        estadoTouch4 = estadoTouchAnterior4;
+        Serial.println("inicio4 ");
+
+        //if ((programa4 > 1000 ) && (randomNumber == 4)) {//Q3-R4-A1
+        digitalWrite(pinLatch, LOW);
+        shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00010000
+        digitalWrite(pinLatch, HIGH);
+        aleatorio(espera(contador));
+      }
+      estadoTouch5 = programa5() > 250;
+      if (estadoTouch5 != estadoTouchAnterior5) {
+        estadoTouch5 = estadoTouchAnterior5;
+        Serial.println("inicio5 ");
+
+        //  if ((programa5 > 1000 ) && (randomNumber == 3)) {//Q4-R3-A2
+        digitalWrite(pinLatch, LOW);
+        shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00001000
+        digitalWrite(pinLatch, HIGH);
+        aleatorio(espera(contador));
+      }
+      estadoTouch6 = programa6() > 250;
+      if (estadoTouch6 != estadoTouchAnterior6) {
+        estadoTouch6 = estadoTouchAnterior6;
+        Serial.println("inicio6 ");
+
+        //if ((programa6 > 1000 ) && (randomNumber == 2)) {//Q5-R2-A3
+        digitalWrite(pinLatch, LOW);
+        shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000100
+        digitalWrite(pinLatch, HIGH);
+        aleatorio(espera(contador));
+      }
+      estadoTouch7 = programa7() > 250;
+      if (estadoTouch7 != estadoTouchAnterior7) {
+        estadoTouch7 = estadoTouchAnterior7;
+        Serial.println("inicio 7");
+
+        //  if ((programa7 > 1000 ) && (randomNumber == 1)) {//Q6-R1-A4
+        digitalWrite(pinLatch, LOW);
+        shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000010
+        digitalWrite(pinLatch, HIGH);
+        aleatorio(espera(contador));
+      }
+      estadoTouch8 = programa8() > 250;
+      if (estadoTouch8 != estadoTouchAnterior8) {
+        estadoTouch8 = estadoTouchAnterior8;
+        Serial.println("inicio8 ");
+
+        //  if ((programa8 > 1000 ) && (randomNumber == 0)) {//Q7-R0-A5
+        digitalWrite(pinLatch, LOW);
+        shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B00000001
+        digitalWrite(pinLatch, HIGH);
+        aleatorio(espera(contador));
+      }
+
+
+      break;
+    case 2:
+      //do something when var equals 2
+      digitalWrite(pinLatch, LOW);
+      shiftOut(pinData, pinClock, LSBFIRST, B11111111);//B10000000
+      digitalWrite(pinLatch, HIGH);
+      digitalWrite(5, HIGH);
+      delay(500);
+      digitalWrite(pinLatch, LOW);
+      shiftOut(pinData, pinClock, LSBFIRST, B00000000);//B10000000
+      digitalWrite(pinLatch, HIGH);
+      digitalWrite(5, LOW);
+      digitalWrite(6, LOW);
+      contadorInicio = 0;
+
+
+      break;
+    default:
+      // if nothing else matches, do the default
+      contadorInicio = 0;
+      // default is optional
+      break;
+  }
+
 }
 
 /*

@@ -28,9 +28,9 @@
      inkscape:document-units="in"
      showgrid="false"
      units="mm"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="499.21739"
-     inkscape:cy="115.96551"
+     inkscape:zoom="0.57791331"
+     inkscape:cx="732.80887"
+     inkscape:cy="404.90502"
      inkscape:window-width="1366"
      inkscape:window-height="699"
      inkscape:window-x="0"
@@ -2145,7 +2145,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="dibujos"
-     style="display:none" />
+     style="display:inline" />
   <g
      inkscape:groupmode="layer"
      id="layer3"
@@ -5947,7 +5947,7 @@
      style="display:inline">
     <g
        id="QRcode"
-       transform="matrix(6.7495208,0,0,6.7495208,556.99182,188.62658)">
+       transform="matrix(6.7495208,0,0,6.7495208,556.99182,208.12658)">
       <rect
          x="0"
          y="0"
@@ -9026,7 +9026,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1631">11-9</text>
+               id="text1631"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">9</text>
           </g>
         </g>
       </g>
@@ -9052,7 +9053,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1641">10-12</text>
+               id="text1641"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">12</text>
           </g>
         </g>
       </g>
@@ -9078,7 +9080,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1651">A1-11</text>
+               id="text1651"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">11</text>
           </g>
         </g>
       </g>
@@ -9104,7 +9107,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1661">A7-A5</text>
+               id="text1661"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">A5</text>
           </g>
         </g>
       </g>
@@ -9130,7 +9134,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1671">12-8</text>
+               id="text1671"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">8</text>
           </g>
         </g>
       </g>
@@ -9156,7 +9161,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1681">A5-A3</text>
+               id="text1681"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">A3</text>
           </g>
         </g>
       </g>
@@ -9182,7 +9188,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1691">A6-A4</text>
+               id="text1691"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">A4</text>
           </g>
         </g>
       </g>
@@ -9208,7 +9215,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1701">A2-10</text>
+               id="text1701"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">10</text>
           </g>
         </g>
       </g>
@@ -9234,7 +9242,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1711">A4-A2</text>
+               id="text1711"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">A2</text>
           </g>
         </g>
       </g>
@@ -9260,7 +9269,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1721">A3-A1</text>
+               id="text1721"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">A1</text>
           </g>
         </g>
       </g>
@@ -9287,7 +9297,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1535">Q6-R1 A6--A4</text>
+               id="text1535"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">Q6-R1 -A4</text>
           </g>
         </g>
       </g>
@@ -9314,7 +9325,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1553">Q2-R5 A2--10</text>
+               id="text1553"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">Q2-R5 -10</text>
           </g>
         </g>
       </g>
@@ -9341,7 +9353,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1573">Q7-R0 A7--A5</text>
+               id="text1573"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">Q7-R0 -A5</text>
           </g>
         </g>
       </g>
@@ -9368,7 +9381,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1583">Q3-R4 A3--A1</text>
+               id="text1583"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">Q3-R4 -A1</text>
           </g>
         </g>
       </g>
@@ -9395,7 +9409,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1593">Q1-R6 A1--11</text>
+               id="text1593"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">Q1-R6 -11</text>
           </g>
         </g>
       </g>
@@ -9422,7 +9437,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1603">Q4-R3 A4--A2</text>
+               id="text1603"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">Q4-R3 -A2</text>
           </g>
         </g>
       </g>
@@ -9449,7 +9465,8 @@
             <text
                x="0"
                y="2.25"
-               id="text1621">Q5-R2 A5--A3</text>
+               id="text1621"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">Q5-R2 -A3</text>
           </g>
         </g>
       </g>
@@ -9476,7 +9493,8 @@
             <text
                x="0"
                y="2.25"
-               id="text2906">Q0-R7 10--12</text>
+               id="text2906"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">Q0-R7 -12</text>
           </g>
         </g>
       </g>
@@ -9503,7 +9521,8 @@
             <text
                x="0.73461914"
                y="2.9846191"
-               id="text8000">5- R8 -11--9</text>
+               id="text8000"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'">5- R8 -9</text>
           </g>
         </g>
       </g>
@@ -9530,7 +9549,8 @@
             <text
                x="0"
                y="2.25"
-               id="text26522">GND</text>
+               id="text26522"
+               style="-inkscape-font-specification:'OCRA Bold';font-family:OCRA;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">GND</text>
           </g>
         </g>
       </g>
@@ -9557,7 +9577,8 @@
             <text
                x="0"
                y="2.25"
-               id="text209656">VIN</text>
+               id="text209656"
+               style="-inkscape-font-specification:'OCRA Bold';font-family:OCRA;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">VIN</text>
           </g>
         </g>
       </g>
@@ -9584,7 +9605,8 @@
             <text
                x="0"
                y="2.25"
-               id="text216288">GND</text>
+               id="text216288"
+               style="-inkscape-font-specification:'OCRA Bold';font-family:OCRA;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">GND</text>
           </g>
         </g>
       </g>
@@ -9611,7 +9633,10 @@
             <text
                x="0"
                y="2.25"
-               id="text216308">GND</text>
+               id="text216308"
+               style="-inkscape-font-specification:'OCRA Bold';font-family:OCRA;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'"
+   id="tspan69976">G</tspan>ND</text>
           </g>
         </g>
       </g>
@@ -9638,7 +9663,8 @@
             <text
                x="0"
                y="2.25"
-               id="text63077">13</text>
+               id="text63077"
+               style="-inkscape-font-specification:'OCRA Bold';font-family:OCRA;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">13</text>
           </g>
         </g>
       </g>
@@ -9848,7 +9874,7 @@
                font-size="7.2px"
                text-anchor="middle"
                fill="#f9a435"
-               style="fill:#000000">neuro reabilitador 0.02v</text>
+               style="fill:#000000;-inkscape-font-specification:'OCRA Bold';font-family:OCRA;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">neuro reabilitador 0.02v</text>
           </g>
         </g>
       </g>
@@ -9929,6 +9955,34 @@
                x="0"
                y="3.75"
                id="text1831">J4</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       partID="879330"
+       id="g197495"
+       transform="matrix(0,1.6643373,-1.6643373,0,320.98531,118.58359)">
+      <g
+         transform="translate(52.1466,137.095)"
+         id="g197493">
+        <g
+           id="g197491">
+          <g
+             font-size="3px"
+             font-style="normal"
+             font-weight="normal"
+             fill="#000000"
+             font-family="OCRA"
+             id="g197489"
+             fill-opacity="1"
+             stroke="none">
+            <text
+               x="-2.2155762"
+               y="2.1467285"
+               id="text197487"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:OCRA;-inkscape-font-specification:'OCRA Bold'"
+               transform="rotate(-90)">6</text>
           </g>
         </g>
       </g>
